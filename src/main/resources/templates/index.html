@@ -8,8 +8,17 @@
 <h1>TodoApp</h1>
 <ul th:each="todo : ${todos}">
     <li>
-        <p th:text="${todo.title}">(title)</p>
+        <div>
+            <p th:text="${todo.title}"></p>
+            <p th:text="${todo.time_limit}"></p>
+        </div>
+
     </li>
 </ul>
+
+<form th:action="@{/add}" th:method="post" th:object="${todoForm}">
+    <input type="text" th:field="*{title}">
+    <button type="submit">作成</button>
+</form>
 </body>
 </html>
