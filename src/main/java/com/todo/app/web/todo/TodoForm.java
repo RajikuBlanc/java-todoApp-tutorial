@@ -6,4 +6,5 @@ import lombok.Data;
 public class TodoForm {
     private long id;
     private String title;
+    private String time_limit;
 }

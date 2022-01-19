@@ -34,9 +34,14 @@ public class TodoController {
     }
 
     @PostMapping("/update")
-    public String updatePostTodo(TodoForm form, Model Model) {
+    public String updateTodo(TodoForm form) {
         todoService.update(form.getId(), form.getTitle());
         return "redirect:/";
     }
 
+    @PostMapping("/delete")
+    public String deleteTodo(TodoForm form) {
+        todoService.delete(form.getId());
+        return "redirect:/";
+    }
 }

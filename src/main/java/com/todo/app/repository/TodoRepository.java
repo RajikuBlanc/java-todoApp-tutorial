@@ -1,10 +1,7 @@
 package com.todo.app.repository;
 
 import com.todo.app.entity.TodoEntity;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -16,7 +13,7 @@ public interface TodoRepository {
     List<TodoEntity> selectAll();
 
     //    データベースに追加
-    @Insert("insert into todo_items (title,time_limit) values (#{title},now())")
+    @Insert("insert into todo_items (title) values (#{title})")
     void add(String title);
     /*
      @Insert("insert into todo_items (title,time_limit) values (#{title}, to_date(#{time_limit},'yyyy-mm-dd'))")
@@ -28,5 +25,8 @@ public interface TodoRepository {
 
     @Select("select * from todo_items where id = #{todoId}")
     TodoEntity selectById(long todoId);
+
+    @Delete("delete from todo_items where id = #{todoId}")
+    void delete(long todoId);
 }
 

@@ -29,4 +29,8 @@ public class TodoService {
     public void update(long id, String title) {
         todoRepository.update(id, title);
     }
+
+    public void delete(long id) {
+        todoRepository.delete(id);
+    }
 }

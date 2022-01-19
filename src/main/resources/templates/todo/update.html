@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>Update</h1>
+<a href="../index.html" th:href="@{/}">Home</a>
 <p th:text="${todo.id}"></p>
 <p th:text="'title:' + ${todo.title}"></p>
-
 <form th:action="@{/update}" th:method="post" th:object="${todoForm}">
     <input name="id" th:value="${todo.id}" type="hidden">
     <input th:field="*{title}" type="text">

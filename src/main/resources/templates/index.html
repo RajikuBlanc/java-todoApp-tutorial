@@ -9,15 +9,20 @@
 <ul th:each="todo : ${todos}">
     <li>
         <div>
-            <p th:text="${todo.title}"></p>
-            <p th:text="${todo.time_limit}"></p>
+            <a href="../todo/update.html" th:href="@{/update/{todoId}(todoId=${todo.id})}">
+                <p th:text="${todo.title}"></p>
+            </a>
+            <form th:action="@{/delete}" th:method="post" th:object="${todoForm}">
+                <input name="id" th:value="${todo.id}" type="hidden">
+                <button type="submit">削除</button>
+            </form>
         </div>
 
     </li>
 </ul>
 
 <form th:action="@{/add}" th:method="post" th:object="${todoForm}">
-    <input type="text" th:field="*{title}">
+    <input th:field="*{title}" type="text">
     <button type="submit">作成</button>
 </form>
 </body>
